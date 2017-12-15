@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Song Recommender</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+  </head>
+
+
+    <h1 align="center">Song Recommender</h1>
+
+    <br>
+
+    <h2 align="center">Music is the Universal Language: Let us find the right song for you.</h2>
+
+    <br>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+
+      </div>
+    </nav>
+
+    <header class="masthead">
+      <div class="container h-100">
+        <div class="row h-100">
+          <div class="col-lg-7 my-auto">
+		        <div class="btn-group">
+            <form method="post" action="/predict">
+						  <div class="form-group">
+						    <label for="exampleFormControlSelect1">Genre</label>
+						    	<select id="genre" class="form-control form-control-lg" name="genre">
+									  <option value="">Select A Genre</option>
+                    <option value="Urban">Urban</option>
+									  <option value="Alternative & Punk">Alternative and Punk</option>
+									  <option value="Pop">Pop</option>
+                    <option value="Electronica">Electronica</option>
+                    <option value="Traditional">Traditional</option>
+                    <option value="Soundtrack">Soundtrack</option>
+                    <option value="Other">Other</option>
+                    <option value="Rock">Rock</option>
+                    <option value=""></option>
+									</select>
+						  </div>
+
+              {% if song_1: %}
+                <div class="form-group">
+                  <input type="hidden" name="song_1" value="{{song_1}}">
+                  <label for="exampleFormControlSelect1">{{song_1}}</label>
+                    <select id="SONG_1" class="form-control form-control-lg" name="SONG_1">
+                      <option value="">Select A Rating</option>
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                </div>
+              {% endif %}
+
+              {% if song_2: %}
+              <div class="form-group">
+                <input type="hidden" name="song_2" value="{{song_2}}">
+                <label for="exampleFormControlSelect1">{{song_2}}</label>
+                  <select id="SONG_2" class="form-control form-control-lg" name="SONG_2">
+                    <option value="">Select A Rating</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+              </div>
+              {% endif %}
+
+              {% if song_3: %}
+              <div class="form-group">
+                <input type="hidden" name="song_3" value="{{song_3}}">
+                <label for="exampleFormControlSelect1">{{song_3}}</label>
+                  <select id="SONG_3" class="form-control form-control-lg" name="SONG_3">
+                    <option value="">Select A Rating</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+              </div>
+              {% endif %}
+
+              {% if song_4: %}
+              <div class="form-group">
+                <input type="hidden" name="song_4" value="{{song_4}}">
+                <label for="exampleFormControlSelect1">{{song_4}}</label>
+                  <select id="SONG_4" class="form-control form-control-lg" name="SONG_4">
+                    <option value="">Select A Rating</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+              </div>
+              {% endif %}
+
+              {% if song_5: %}
+              <div class="form-group">
+                <input type="hidden" name="song_5" value="{{song_5}}">
+                <label for="exampleFormControlSelect1">{{song_5}}</label>
+                  <select id="SONG_5" class="form-control form-control-lg" name="SONG_5">
+                    <option value="">Select A Rating</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+              </div>
+              {% endif %}
+
+              {% if song_6: %}
+              <div class="form-group">
+                <input type="hidden" name="song_6" value="{{song_6}}">
+                <label for="exampleFormControlSelect1">{{song_6}}</label>
+                  <select id="SONG_6" class="form-control form-control-lg" name="SONG_6">
+                    <option value="">Select A Rating</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+              </div>
+              {% endif %}
+
+              {% if song_7: %}
+              <div class="form-group">
+                <input type="hidden" name="song_7" value="{{song_7}}">
+                <label for="exampleFormControlSelect1">{{song_7}}</label>
+                  <select id="SONG_7" class="form-control form-control-lg" name="SONG_7">
+                    <option value="">Select A Rating</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+              </div>
+              {% endif %}
+
+              {% if song_8: %}
+              <div class="form-group">
+                <input type="hidden" name="song_8" value="{{song_8}}">
+                <label for="exampleFormControlSelect1">{{song_8}}</label>
+                  <select id="SONG_8" class="form-control form-control-lg" name="SONG_8">
+                    <option value="">Select A Rating</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+              </div>
+              {% endif %}
+
+              {% if song_9: %}
+              <div class="form-group">
+                <input type="hidden" name="song_9" value="{{song_9}}">
+                <label for="exampleFormControlSelect1">{{song_9}}</label>
+                  <select id="SONG_9" class="form-control form-control-lg" name="SONG_9">
+                    <option value="">Select A Rating</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+              </div>
+              {% endif %}
+
+              {% if song_10: %}
+              <div class="form-group">
+                <input type="hidden" name="song_10" value="{{song_10}}">
+                <label for="exampleFormControlSelect1">{{song_10}}</label>
+                  <select id="SONG_10" class="form-control form-control-lg" name="SONG_10">
+                    <option value="">Select A Rating</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+              </div>
+              {% endif %}
+
+              {% if song_11: %}
+              <div class="form-group">
+                <input type="hidden" name="song_11" value="{{song_11}}">
+                <label for="exampleFormControlSelect1">{{song_11}}</label>
+                  <select id="SONG_11" class="form-control form-control-lg" name="SONG_11">
+                    <option value="">Select A Rating</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+              </div>
+              {% endif %}
+
+              {% if song_12: %}
+              <div class="form-group">
+                <input type="hidden" name="song_12" value="{{song_12}}">
+                <label for="exampleFormControlSelect1">{{song_12}}</label>
+                  <select id="SONG_12" class="form-control form-control-lg" name="SONG_12">
+                    <option value="">Select A Rating</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+              </div>
+              {% endif %}
+
+              {% if song_13: %}
+              <div class="form-group">
+                <input type="hidden" name="song_13" value="{{song_13}}">
+                <label for="exampleFormControlSelect1">{{song_13}}</label>
+                  <select id="SONG_13" class="form-control form-control-lg" name="SONG_13">
+                    <option value="">Select A Rating</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+              </div>
+              {% endif %}
+
+              {% if song_14: %}
+              <div class="form-group">
+                <input type="hidden" name="song_14" value="{{song_14}}">
+                <label for="exampleFormControlSelect1">{{song_14}}</label>
+                  <select id="SONG_14" class="form-control form-control-lg" name="SONG_14">
+                    <option value="">Select A Rating</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+              </div>
+              {% endif %}
+
+              {% if song_15: %}
+              <div class="form-group">
+                <input type="hidden" name="song_15" value="{{song_15}}">
+                <label for="exampleFormControlSelect1">{{song_15}}</label>
+                  <select id="SONG_15" class="form-control form-control-lg" name="SONG_15">
+                    <option value="">Select A Rating</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+              </div>
+              {% endif %}
+
+              {% if song_16: %}
+              <div class="form-group">
+                <input type="hidden" name="song_16" value="{{song_16}}">
+                <label for="exampleFormControlSelect1">{{song_16}}</label>
+                  <select id="SONG_16" class="form-control form-control-lg" name="SONG_16">
+                    <option value="">Select A Rating</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+              </div>
+              {% endif %}
+
+              {% if song_17: %}
+              <div class="form-group">
+                <input type="hidden" name="song_17" value="{{song_17}}">
+                <label for="exampleFormControlSelect1">{{song_17}}</label>
+                  <select id="SONG_17" class="form-control form-control-lg" name="SONG_17">
+                    <option value="">Select A Rating</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+              </div>
+              {% endif %}
+
+              {% if song_18: %}
+              <div class="form-group">
+                <input type="hidden" name="song_18" value="{{song_18}}">
+                <label for="exampleFormControlSelect1">{{song_18}}</label>
+                  <select id="SONG_18" class="form-control form-control-lg" name="SONG_18">
+                    <option value="">Select A Rating</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+              </div>
+              {% endif %}
+
+              {% if song_19: %}
+              <div class="form-group">
+                <input type="hidden" name="song_19" value="{{song_19}}">
+                <label for="exampleFormControlSelect1">{{song_19}}</label>
+                  <select id="SONG_19" class="form-control form-control-lg" name="SONG_19">
+                    <option value="">Select A Rating</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+              </div>
+              {% endif %}
+
+              {% if song_20: %}
+              <div class="form-group">
+                <input type="hidden" name="song_20" value="{{song_20}}">
+                <label for="exampleFormControlSelect1">{{song_20}}</label>
+                  <select id="SONG_20" class="form-control form-control-lg" name="SONG_20">
+                    <option value="">Select A Rating</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+              </div>
+              {% endif %}
+
+						  <button type="submit" class="btn btn-danger">Find me a song!</button>
+						</form>
+
+
+				</div>
+            
+          </div>
+          <div class="col-lg-5 my-auto">
+        </div>
+      </div>
+    </header>
+
+  </body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<TITLE>Recommendation</TITLE>
+	</head>
+
+	<body>
+		
+		<h1 align="center">Song Recommender</h1>
+
+	    <br>
+
+	    <h2 align="center">Music is the Universal Language: Let us find the right song for you.</h2>
+
+	    <br>
+
+	    {% if title: %}
+	    <h3 align="center">{{title}}</h3>
+	    {% endif %}
+
+	    {% if artist: %}
+	    <h5 align="center">{{artist}}</h5>
+	    {% endif %}
+
+	    {% if genre: %}
+	    <h5 align="center">{{genre}}</h5>
+	    {% endif %}
+
+	    {% if lyric: %}
+	    <p align="center">{{lyric}}</p>
+	    {% endif %}
+
+	</body>
+</html>
